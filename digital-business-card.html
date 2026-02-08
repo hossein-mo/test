@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Business Card - Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-container {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .business-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            font-weight: bold;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .title {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .company {
+            color: #888;
+            font-size: 14px;
+        }
+
+        .contact-info {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            color: #555;
+        }
+
+        .contact-item svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            fill: #667eea;
+        }
+
+        .methods-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .methods-section h2 {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .method {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .method:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .method h3 {
+            color: #667eea;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .method p {
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        button, .btn-link {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        button:hover, .btn-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active, .btn-link:active {
+            transform: translateY(0);
+        }
+
+        .qr-container {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            display: inline-block;
+            margin: 10px auto;
+            display: block;
+            width: fit-content;
+        }
+
+        #qrcode {
+            margin: 0 auto;
+        }
+
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 4px;
+            font-size: 13px;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <!-- Business Card Display -->
+        <div class="business-card">
+            <div class="profile-section">
+                <div class="profile-pic">H</div>
+                <h1>Hossein</h1>
+                <div class="title">Software Engineer</div>
+                <div class="company">Tech Company</div>
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <span>hossein@example.com</span>
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    <span>+1 (555) 123-4567</span>
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <span>San Francisco, CA</span>
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+                    <span>www.hossein-portfolio.com</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Methods to Add Contact -->
+        <div class="methods-section">
+            <h2>📱 Test Different Methods</h2>
+
+            <!-- Method 1: Web Share API -->
+            <div class="method">
+                <h3>Method 1: Web Share API (Mobile Only)</h3>
+                <p>Uses native share dialog. On Android, you can share to Contacts app directly.</p>
+                <button onclick="shareVCard()">📤 Share Contact</button>
+                <div id="share-result" style="margin-top: 10px; font-size: 12px; color: #666;"></div>
+            </div>
+
+            <!-- Method 2: Android Intent URL -->
+            <div class="method">
+                <h3>Method 2: Android Intent URL</h3>
+                <p>Attempts to open Contacts app directly (Android only).</p>
+                <a href="intent://contacts/people/#Intent;scheme=content;package=com.android.contacts;end" class="btn-link">
+                    📱 Open Contacts App
+                </a>
+                <div class="note">
+                    ⚠️ This opens the contacts app but doesn't add data automatically
+                </div>
+            </div>
+
+            <!-- Method 3: Tel/Email Links -->
+            <div class="method">
+                <h3>Method 3: Native Links</h3>
+                <p>Uses native phone/email handlers. Tap to save from there.</p>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <a href="tel:+15551234567" class="btn-link" style="flex: 1; min-width: 45%;">📞 Call</a>
+                    <a href="sms:+15551234567" class="btn-link" style="flex: 1; min-width: 45%;">💬 SMS</a>
+                    <a href="mailto:hossein@example.com" class="btn-link" style="flex: 1; min-width: 45%;">✉️ Email</a>
+                </div>
+                <div class="note">
+                    💡 Tap on phone/email to save from native apps
+                </div>
+            </div>
+
+            <!-- Method 4: JavaScript Generated VCF -->
+            <div class="method">
+                <h3>Method 4: JavaScript Download</h3>
+                <p>Generates VCF file dynamically. Downloads to your device.</p>
+                <button onclick="downloadVCard()">📥 Download VCF</button>
+            </div>
+
+            <!-- Method 5: Data URI with Auto-Open Attempt -->
+            <div class="method">
+                <h3>Method 5: Auto-Open VCF</h3>
+                <p>Downloads VCF and attempts to auto-open it.</p>
+                <button onclick="downloadAndOpenVCard()">📥 Download & Open</button>
+                <div class="note">
+                    💡 May require you to tap the downloaded file
+                </div>
+            </div>
+
+            <!-- Method 6: FileReader API Test -->
+            <div class="method">
+                <h3>Method 6: Navigator.contacts API (Experimental)</h3>
+                <p>Uses experimental Contact Picker API (Chrome 80+ on Android).</p>
+                <button onclick="testContactsAPI()">🧪 Test Contacts API</button>
+                <div id="contacts-api-result" style="margin-top: 10px; font-size: 12px; color: #666;"></div>
+            </div>
+
+            <!-- Method 7: QR Code -->
+            <div class="method">
+                <h3>Method 7: QR Code (MECARD Format)</h3>
+                <p>Scan with camera app. Uses MECARD format for better Android compatibility.</p>
+                <div class="qr-container">
+                    <canvas id="qrcode"></canvas>
+                </div>
+                <div class="note">
+                    📱 Open camera app and point at QR code
+                </div>
+            </div>
+
+            <!-- Method 8: Copy to Clipboard -->
+            <div class="method">
+                <h3>Method 8: Copy Contact Info</h3>
+                <p>Copy contact details to clipboard, then manually add to contacts.</p>
+                <button onclick="copyContactInfo()">📋 Copy Info</button>
+                <div id="copy-result" style="margin-top: 10px; font-size: 12px; color: #666;"></div>
+            </div>
+
+            <!-- Device Detection Info -->
+            <div class="method">
+                <h3>📊 Device Information</h3>
+                <div id="device-info" style="font-size: 13px; color: #666; line-height: 1.6;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <script>
+        // VCard data
+        const vCardData = `BEGIN:VCARD
+VERSION:3.0
+FN:Hossein
+N:;Hossein;;;
+TEL;TYPE=CELL:+15551234567
+EMAIL;TYPE=INTERNET:hossein@example.com
+ORG:Tech Company
+TITLE:Software Engineer
+ADR;TYPE=WORK:;;San Francisco;CA;;USA
+URL:https://www.hossein-portfolio.com
+NOTE:Digital Business Card Test
+END:VCARD`;
+
+        // MECARD format for QR code (better Android compatibility)
+        const meCardData = `MECARD:N:Hossein;TEL:+15551234567;EMAIL:hossein@example.com;ORG:Tech Company;URL:https://www.hossein-portfolio.com;;`;
+
+        // Method 1: Web Share API
+        async function shareVCard() {
+            const resultDiv = document.getElementById('share-result');
+            
+            // Check if running on local file
+            if (window.location.protocol === 'file:') {
+                resultDiv.innerHTML = '⚠️ Web Share requires HTTPS<br><small>To test: use "python -m http.server 8000" then open http://localhost:8000</small>';
+                resultDiv.style.color = '#ffc107';
+                return;
+            }
+            
+            if (!navigator.share) {
+                resultDiv.textContent = '❌ Web Share API not supported on this browser';
+                resultDiv.style.color = '#dc3545';
+                return;
+            }
+
+            // Check if sharing files is supported
+            if (!navigator.canShare) {
+                resultDiv.textContent = '❌ File sharing not supported';
+                resultDiv.style.color = '#dc3545';
+                return;
+            }
+
+            try {
+                const blob = new Blob([vCardData], { type: 'text/vcard' });
+                const file = new File([blob], 'hossein-contact.vcf', { type: 'text/vcard' });
+                
+                if (!navigator.canShare({ files: [file] })) {
+                    resultDiv.textContent = '❌ Cannot share VCF files on this device';
+                    resultDiv.style.color = '#dc3545';
+                    return;
+                }
+                
+                await navigator.share({
+                    files: [file],
+                    title: 'Contact Card',
+                    text: 'Add Hossein to your contacts'
+                });
+                
+                resultDiv.textContent = '✅ Shared successfully!';
+                resultDiv.style.color = '#28a745';
+            } catch (err) {
+                if (err.name === 'AbortError') {
+                    resultDiv.textContent = '⚠️ Share cancelled';
+                    resultDiv.style.color = '#ffc107';
+                } else {
+                    resultDiv.textContent = `❌ Error: ${err.message}`;
+                    resultDiv.style.color = '#dc3545';
+                }
+            }
+        }
+
+        // Method 4: JavaScript Generated Download
+        function downloadVCard() {
+            const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'hossein-contact.vcf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+
+        // Method 5: Download and attempt to auto-open
+        function downloadAndOpenVCard() {
+            const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            
+            // Try to open in new window (may trigger download instead)
+            const newWindow = window.open(url, '_blank');
+            
+            // Fallback to download
+            setTimeout(() => {
+                if (!newWindow || newWindow.closed) {
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = 'hossein-contact.vcf';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }
+                URL.revokeObjectURL(url);
+            }, 1000);
+        }
+
+        // Method 6: Test experimental Contacts API
+        async function testContactsAPI() {
+            const resultDiv = document.getElementById('contacts-api-result');
+            
+            // Check if Contact Picker API is available
+            if ('contacts' in navigator && 'ContactsManager' in window) {
+                resultDiv.textContent = '✅ Contact Picker API is available!';
+                resultDiv.style.color = '#28a745';
+                
+                try {
+                    // Note: This API can only READ contacts, not write them
+                    const props = await navigator.contacts.getProperties();
+                    resultDiv.textContent += '\n📋 Available properties: ' + props.join(', ');
+                    resultDiv.textContent += '\n⚠️ Note: This API can only READ contacts, not add them';
+                } catch (err) {
+                    resultDiv.textContent += '\n❌ Error: ' + err.message;
+                }
+            } else {
+                resultDiv.textContent = '❌ Contact Picker API not supported';
+                resultDiv.style.color = '#dc3545';
+            }
+        }
+
+        // Method 8: Copy contact info to clipboard
+        async function copyContactInfo() {
+            const resultDiv = document.getElementById('copy-result');
+            const contactInfo = `Hossein
+Software Engineer @ Tech Company
+📞 +1 (555) 123-4567
+📧 hossein@example.com
+🌐 www.hossein-portfolio.com
+📍 San Francisco, CA`;
+
+            try {
+                await navigator.clipboard.writeText(contactInfo);
+                resultDiv.textContent = '✅ Contact info copied to clipboard!';
+                resultDiv.style.color = '#28a745';
+            } catch (err) {
+                resultDiv.textContent = '❌ Failed to copy: ' + err.message;
+                resultDiv.style.color = '#dc3545';
+            }
+        }
+
+        // Display device information
+        function displayDeviceInfo() {
+            const infoDiv = document.getElementById('device-info');
+            const info = [];
+            
+            info.push(`<strong>Browser:</strong> ${navigator.userAgent.match(/(Chrome|Firefox|Safari|Edge|Opera)\/[\d.]+/)?.[0] || 'Unknown'}`);
+            info.push(`<strong>Platform:</strong> ${navigator.platform}`);
+            info.push(`<strong>Is Mobile:</strong> ${/Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ? 'Yes' : 'No'}`);
+            info.push(`<strong>Screen:</strong> ${window.screen.width}x${window.screen.height}`);
+            info.push(`<strong>Protocol:</strong> ${window.location.protocol} ${window.location.protocol === 'file:' ? '⚠️' : '✅'}`);
+            info.push(`<strong>Secure Context:</strong> ${window.isSecureContext ? '✅' : '❌'}`);
+            
+            // Feature detection
+            info.push(`<strong>Web Share API:</strong> ${navigator.share ? '✅' : '❌'}`);
+            info.push(`<strong>Can Share Files:</strong> ${navigator.canShare ? '✅' : '❌'}`);
+            info.push(`<strong>Clipboard API:</strong> ${navigator.clipboard ? '✅' : '❌'}`);
+            info.push(`<strong>Contact Picker:</strong> ${'contacts' in navigator ? '✅' : '❌'}`);
+            
+            if (window.location.protocol === 'file:') {
+                info.push('<br><strong style="color: #ffc107;">⚠️ Running as local file - some features disabled</strong>');
+                info.push('<small>Use a local server for full functionality</small>');
+            }
+            
+            infoDiv.innerHTML = info.join('<br>');
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Display device info
+            displayDeviceInfo();
+            
+            // Create QR code with MECARD format (better for Android)
+            const qrcode = new QRCode(document.getElementById('qrcode'), {
+                text: meCardData,
+                width: 200,
+                height: 200,
+                colorDark: '#667eea',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            // Add feedback for button clicks (skip for native links)
+            document.querySelectorAll('button').forEach(button => {
+                const originalClick = button.onclick;
+                button.addEventListener('click', function(e) {
+                    if (originalClick && this.textContent.indexOf('✓') === -1) {
+                        const originalText = this.textContent;
+                        this.textContent = '✓ Processing...';
+                        setTimeout(() => {
+                            this.textContent = originalText;
+                        }, 2000);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
